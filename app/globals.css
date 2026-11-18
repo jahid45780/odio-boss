@@ -1,0 +1,271 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-body-active, var(--font-manrope)), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-active, var(--font-outfit)), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --color-surface-primary: var(--bg-primary);
+  --color-surface-secondary: var(--bg-secondary);
+  --color-surface-card: var(--bg-card);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-ink-primary: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-btn-primary: var(--btn-bg);
+  --color-btn-contrast: var(--btn-text);
+  --color-line-subtle: var(--border-subtle);
+  --color-line-strong: var(--border-strong);
+}
+
+:root {
+  color-scheme: light;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-card: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --text-primary: #111827;
+  --text-secondary: #64748b;
+  --accent-primary: #0077cc;
+  --accent-secondary: #2563eb;
+  --accent-contrast: #ffffff;
+  --btn-bg: #0077cc;
+  --btn-text: #ffffff;
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 8px 28px rgba(0, 119, 204, 0.16);
+  --radius-card: 0.875rem;
+  --radius-control: 0.5rem;
+  --section-py: 5rem;
+  --font-scale: 1;
+  --font-display-active: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-body-active: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg-primary: #050608;
+  --bg-secondary: #0b1018;
+  --bg-card: #101722;
+  --bg-elevated: #141e2c;
+  --text-primary: #ffffff;
+  --text-secondary: #a1aab8;
+  --accent-primary: #00b8ff;
+  --accent-secondary: #1677ff;
+  --accent-contrast: #050608;
+  --btn-bg: #00b8ff;
+  --btn-text: #050608;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 24px rgba(0, 184, 255, 0.22);
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: calc(16px * var(--font-scale, 1));
+  scroll-behavior: smooth;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body-active);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display-active);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.rounded-theme-card {
+  border-radius: var(--radius-card);
+}
+
+.rounded-theme-control {
+  border-radius: var(--radius-control);
+}
+
+.section-py {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+.shadow-theme-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-theme-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Custom adaptive scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* SONIQ Hero GPU-accelerated keyframes */
+@keyframes hero-orb-drift-a {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(28px, -22px, 0) scale(1.08);
+  }
+}
+
+@keyframes hero-orb-drift-b {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-24px, 18px, 0) scale(1.06);
+  }
+}
+
+@keyframes hero-wave-ring {
+  0% {
+    transform: scale(0.76);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.38);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-eq-pulse {
+  0%, 100% {
+    transform: scaleY(0.28);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 0.78;
+  }
+}
+
+@keyframes hero-particle-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate3d(6px, -18px, 0);
+    opacity: 0.7;
+  }
+}
+
+@keyframes hero-text-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hero-shadow-breathe {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 0.52;
+  }
+  50% {
+    transform: scaleX(0.9) scaleY(0.92);
+    opacity: 0.34;
+  }
+}
+
+.hero-orb-a {
+  animation: hero-orb-drift-a 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-orb-b {
+  animation: hero-orb-drift-b 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-wave-ring {
+  animation: hero-wave-ring 4.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.hero-eq-bar {
+  transform-origin: center bottom;
+  animation: hero-eq-pulse 2.6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.hero-particle {
+  animation: hero-particle-float 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.hero-gradient-text {
+  background-image: linear-gradient(
+    115deg,
+    var(--accent-primary) 0%,
+    #5ee7ff 38%,
+    var(--accent-secondary) 72%,
+    var(--accent-primary) 100%
+  );
+  background-size: 220% 100%;
+  animation: hero-text-shimmer 7s ease-in-out infinite;
+}
+
+html:not(.dark) .hero-gradient-text {
+  background-image: linear-gradient(
+    115deg,
+    var(--accent-secondary) 0%,
+    var(--accent-primary) 45%,
+    #0284c7 80%,
+    var(--accent-secondary) 100%
+  );
+}
+
+.hero-floor-shadow {
+  animation: hero-shadow-breathe 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+

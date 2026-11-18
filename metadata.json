@@ -1,0 +1,6 @@
+{
+  "name": "SONIQ",
+  "description": "SONIQ — Luxury acoustic engineering and premium audio speaker e-commerce platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
